@@ -1,0 +1,5 @@
+Synthetic demonstration resume — Candidate 01
+
+Skills: Python, SQL, pandas, scikit-learn, data visualization, machine learning.
+Experience: Built academic data analysis projects and predictive modelling prototypes.
+Education: Computer science undergraduate (synthetic profile).
