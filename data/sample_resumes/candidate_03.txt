@@ -1,0 +1,5 @@
+Synthetic demonstration resume — Candidate 03
+
+Skills: Python, statistics, NumPy, pandas, SQL, machine learning, NLP.
+Experience: Completed text analytics and exploratory data analysis projects.
+Education: Data science undergraduate (synthetic profile).
