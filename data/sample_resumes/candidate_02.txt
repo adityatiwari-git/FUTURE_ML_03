@@ -1,0 +1,5 @@
+Synthetic demonstration resume — Candidate 02
+
+Skills: Java, HTML, CSS, JavaScript, React, Git, user interface development.
+Experience: Built web applications and responsive front-end prototypes.
+Education: Information technology undergraduate (synthetic profile).
