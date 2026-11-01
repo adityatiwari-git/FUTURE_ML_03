@@ -27,6 +27,12 @@ class MatchingTests(unittest.TestCase):
         self.assertEqual(result.missing_required, ["sql"])
         self.assertAlmostEqual(result.required_coverage, 2 / 3, places=4)
 
+    def test_custom_job_skills_are_detected_in_resume(self):
+        result = match_candidate("candidate-custom", "Used PowerPoint to present research.",
+                                 "Presentation role", ["PowerPoint"])
+        self.assertEqual(result.matched_required, ["powerpoint"])
+        self.assertEqual(result.missing_required, [])
+
     def test_ranking_is_descending_and_deterministic(self):
         job = "Python SQL pandas statistics data visualization"
         candidates = [
