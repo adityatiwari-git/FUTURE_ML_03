@@ -40,14 +40,19 @@ def _contains_phrase(text: str, phrase: str) -> bool:
     return re.search(pattern, text, flags=re.IGNORECASE) is not None
 
 
-def extract_skills(text: str, taxonomy: dict[str, list[str]] | None = None) -> set[str]:
-    """Extract canonical skills using boundary-aware aliases, not opaque NER."""
+def extract_skills(text: str, taxonomy: dict[str, list[str]] | None = None,
+                   additional_skills=None) -> set[str]:
+    """Extract canonical skills plus explicitly supplied custom job-skill phrases."""
     source = text or ""
     mapping = taxonomy or SKILL_ALIASES
     found = set()
     for canonical, aliases in mapping.items():
         if any(_contains_phrase(source, alias) for alias in aliases):
             found.add(canonical)
+    for skill in additional_skills or []:
+        phrase = str(skill).strip()
+        if phrase and _contains_phrase(source, phrase):
+            found.add(phrase.lower())
     return found
 
 
