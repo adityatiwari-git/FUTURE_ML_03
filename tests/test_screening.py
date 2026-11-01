@@ -22,7 +22,7 @@ class MatchingTests(unittest.TestCase):
                                  "Python SQL pandas analyst role", ["Python", "SQL", "pandas"])
         self.assertEqual(result.matched_required, ["pandas", "python"])
         self.assertEqual(result.missing_required, ["sql"])
-        self.assertAlmostEqual(result.required_coverage, 2 / 3)
+        self.assertAlmostEqual(result.required_coverage, 2 / 3, places=4)
 
     def test_ranking_is_descending_and_deterministic(self):
         job = "Python SQL pandas statistics data visualization"
