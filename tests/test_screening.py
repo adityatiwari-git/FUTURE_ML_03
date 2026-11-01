@@ -1,7 +1,10 @@
 import unittest
+from io import BytesIO
+from docx import Document
 from src.skills import extract_skills, normalize_skill_list
 from src.matcher import match_candidate, rank_candidates, extract_experience_years
 from src.parser import extract_text_from_bytes
+from src.evaluate import ndcg_at_k, reciprocal_rank
 
 
 class SkillExtractionTests(unittest.TestCase):
@@ -39,9 +42,25 @@ class MatchingTests(unittest.TestCase):
         self.assertIsNone(extract_experience_years("Worked on projects during college."))
 
 
+class RankingMetricTests(unittest.TestCase):
+    def test_ndcg_and_mrr_for_perfect_order(self):
+        ranking = ["a", "b", "c"]
+        relevance = {"a": 3, "b": 2, "c": 0}
+        self.assertAlmostEqual(ndcg_at_k(ranking, relevance, 3), 1.0)
+        self.assertAlmostEqual(reciprocal_rank(ranking, relevance), 1.0)
+
+
 class ParsingTests(unittest.TestCase):
     def test_txt_parser(self):
         self.assertEqual(extract_text_from_bytes("resume.txt", b"Python developer"), "Python developer")
+
+    def test_docx_parser(self):
+        document = Document()
+        document.add_paragraph("Python and SQL analyst")
+        stream = BytesIO()
+        document.save(stream)
+        parsed = extract_text_from_bytes("resume.docx", stream.getvalue())
+        self.assertIn("Python and SQL", parsed)
 
     def test_unsupported_file_type(self):
         with self.assertRaises(ValueError):
