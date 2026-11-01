@@ -1,0 +1,5 @@
+Synthetic demonstration resume — Candidate 04
+
+Skills: Python, NLP, machine learning, scikit-learn, deep learning, PyTorch.
+Experience: Created text classification and language processing coursework prototypes.
+Education: Software engineering undergraduate (synthetic profile).
