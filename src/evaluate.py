@@ -1,7 +1,11 @@
 """Evaluate ranking on a small, explicitly synthetic relevance-judgement set."""
 import json
 import math
+import sys
 from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 from src.matcher import rank_candidates
 from src.sample_data import JOBS, load_sample_candidates
 
@@ -60,7 +64,7 @@ def main():
         "per_role": per_role,
         "limitation": "Fictional resumes and manually assigned synthetic relevance labels; not evidence of real-world hiring validity.",
     }
-    output = Path(__file__).resolve().parents[1] / "reports"
+    output = ROOT / "reports"
     output.mkdir(exist_ok=True)
     (output / "ranking_evaluation.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps(summary, indent=2))
