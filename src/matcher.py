@@ -41,9 +41,9 @@ def match_candidate(candidate_id: str, resume_text: str, job_description: str,
                     preferred_skills: Iterable[str] | None = None) -> CandidateMatch:
     resume = resume_text or ""
     job = job_description or ""
-    resume_skills = extract_skills(resume)
     required = normalize_skill_list(required_skills or extract_skills(job))
     preferred = normalize_skill_list(preferred_skills or [])
+    resume_skills = extract_skills(resume, additional_skills=required | preferred)
     matched_required = resume_skills & required
     matched_preferred = resume_skills & preferred
     missing = required - matched_required
