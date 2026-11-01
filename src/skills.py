@@ -36,7 +36,7 @@ SKILL_ALIASES = {
 }
 
 def _contains_phrase(text: str, phrase: str) -> bool:
-    pattern = r"(?<![a-z0-9+#.])" + re.escape(phrase) + r"(?![a-z0-9+#.])"
+    pattern = r"(?<![a-z0-9+#])" + re.escape(phrase) + r"(?![a-z0-9+#])"
     return re.search(pattern, text, flags=re.IGNORECASE) is not None
 
 
