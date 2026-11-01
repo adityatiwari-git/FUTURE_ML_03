@@ -1,4 +1,9 @@
 """Backward-compatible CLI entry point for candidate ranking."""
+import sys
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 from src.matcher import rank_candidates
 from src.sample_data import JOBS, load_sample_candidates
 
