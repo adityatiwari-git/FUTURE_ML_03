@@ -1,0 +1,5 @@
+Synthetic demonstration resume — Candidate 06
+
+Skills: HTML, CSS, JavaScript, React, TypeScript, Git, communication.
+Experience: Built responsive web interfaces and reusable frontend components.
+Education: Web technology undergraduate (synthetic profile).
