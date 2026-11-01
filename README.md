@@ -118,6 +118,19 @@ python -m unittest discover -s tests -v
 python -m compileall -q src app.py
 ~~~
 
+## Demonstration ranking results
+
+The GitHub Actions benchmark on the six fictional profiles produced the following results:
+
+| Role | NDCG@5 | MRR |
+|---|---:|---:|
+| Junior Data Analyst | 1.0000 | 1.0000 |
+| Junior NLP Engineer | 0.9341 | 1.0000 |
+| Frontend Developer | 1.0000 | 1.0000 |
+| **Mean** | **0.9780** | **1.0000** |
+
+These scores measure agreement with the small, manually authored synthetic relevance table in src/evaluate.py. They are a reproducibility/smoke check only. They must not be interpreted as accuracy on real resumes or evidence of fair, valid or predictive hiring decisions. The evaluation JSON is uploaded as a GitHub Actions artifact for inspection.
+
 ## Privacy, fairness and limitations
 
 - Do not upload or commit real resumes unless you have an appropriate lawful basis, candidate permission where required, and organizational approval.
