@@ -19,3 +19,9 @@ jobs:
         run: python -m compileall -q src app.py
       - name: Run synthetic ranking evaluation
         run: python src/evaluate.py
+      - name: Upload synthetic evaluation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: rolefit-synthetic-ranking-evaluation
+          path: reports/ranking_evaluation.json
+          if-no-files-found: error
