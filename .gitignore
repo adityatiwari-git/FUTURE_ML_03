@@ -3,10 +3,20 @@ __pycache__/
 .venv/
 venv/
 .ipynb_checkpoints/
-.DS_Store
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
 .streamlit/secrets.toml
+
+# Generated documents and reports
 *.pdf
 *.docx
-!data/sample_resumes/*.txt
 reports/*
 !reports/.gitkeep
+
+# Keep text resume samples
+!data/sample_resumes/*.txt
+
+.DS_Store
